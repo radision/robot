@@ -49,18 +49,18 @@ def main(num_receivers=3):
         receiver = Receiver(goOnEvent=receiverEvent, heartbeats=heartbeats)
         receiver.start()
         receivers.append(receiver)
-    print 'Threaded heartbeat server listening on port %d' % UDP_PORT
-    print 'press Ctrl-C to stop'
+    print('Threaded heartbeat server listening on port %d' % UDP_PORT)
+    print('press Ctrl-C to stop')
     try:
         while True:
             silent = heartbeats.getSilent()
-            print 'Silent clients: %s' % silent
+            print('Silent clients: %s' % silent)
             time.sleep(CHECK_PERIOD)
     except KeyboardInterrupt:
-        print 'Exiting, please wait...'
+        print('Exiting, please wait...')
         receiverEvent.clear()
         for receiver in receivers:
             receiver.join()
-        print 'Finished.'
+        print('Finished.')
 if __name__ == '__main__':
     main()
