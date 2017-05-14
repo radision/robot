@@ -10,8 +10,7 @@ import smtplib
 
 def SendEmail(timeout):
   sender = 'nagios2'
-  receivers = ['ym26@nyu.edu']
-
+  receivers = ['radision@126.com']
 
   message = """From: Nagios <nagios@nagios2.bobst.nyu.edu>
 To: Systems <ym26@nyu.edu>
@@ -21,8 +20,8 @@ Heartbeat Timeout: %i
 """ % (timeout)
 
   try:
-    # smtpObj = smtplib.SMTP('mail.library.nyu.edu', 25)
-    # smtpObj.sendmail(sender, receivers, message)
+    smtpObj = smtplib.SMTP('localhost', 25)
+    smtpObj.sendmail(sender, receivers, message)
     print "Successfully sent email"
   except smtplib.SMTPException:
     print "Error: unable to send email"
