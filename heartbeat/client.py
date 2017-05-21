@@ -4,8 +4,9 @@
 import socket
 import time
 
-message = "hello by radision from 127.0.0.1"
-host = socket.gethostname()		# get hostname, or you can set it as '0.0.0.0' or dns
+message = "hello by radision from 127.0.0.1 at device first_dev"
+# host = socket.gethostname()		# get hostname, or you can set it as '0.0.0.0' or dns
+host = '139.162.84.223'
 port = 9977				# get port
 
 s = socket.socket(socket.AF_INET,	# Internet
@@ -13,4 +14,4 @@ s = socket.socket(socket.AF_INET,	# Internet
 
 while True:
   s.sendto(message, (host,port))
-  time.sleep(3)
+  time.sleep(10)
